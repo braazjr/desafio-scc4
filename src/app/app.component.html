@@ -1,0 +1,30 @@
+<nav>
+  <div class="nav-wrapper">
+    <a href="#" class="brand-logo" style="padding-left: 15px">SCC4</a>
+    <a href="#" data-target="left-menu" class="sidenav-trigger">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>
+        <a href="/listarClientes">Listar Clientes</a>
+      </li>
+      <li>
+        <a href="/cadastroCliente">Cadastrar Cliente</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<ul class="sidenav" id="left-menu">
+  <li>
+    <a href="/listarClientes">Listar Clientes</a>
+  </li>
+  <li>
+    <a href="/cadastroCliente">Cadastrar Cliente</a>
+  </li>
+</ul>
+
+<br>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,46 @@
+<h5>Lista de Clientes</h5>
+
+<table class="table table-sm responsive-table highlight">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+      <th scope="col">CPF/CNPJ</th>
+      <th scope="col">E-mail</th>
+      <th scope="col">Celular</th>
+      <th scope="col">Localização</th>
+      <th scope="col">Status</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let c of clientes">
+      <td>{{ c.name }}</td>
+      <td>{{ c.federalId }}</td>
+      <td>{{ c.email }}</td>
+      <td>{{ c.phone }}</td>
+      <td></td>
+      <td>
+        <span class="badge" [ngClass]="[c.active == true ? 'badge-success': 'badge-danger']">{{ c.active == true ? 'Ativo' : 'Inativo' }}</span>
+      </td>
+      <td>
+        <a [href]="'/consultaCliente/' + c.id">
+          <i class="material-icons">edit</i>
+        </a>
+        <a class="modal-trigger" style="cursor: pointer;" data-target="modalExclusao" (click)="clienteExclusao = c">
+          <i class="material-icons">delete</i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div id="modalExclusao" class="modal">
+  <div class="modal-content">
+    <h4>Exclusão de cliente</h4>
+    <p>Tem certeza que deseja excluir o cliente: {{ clienteExclusao.name }} ?</p>
+  </div>
+  <div class="modal-footer">
+    <span href="#!" class="modal-close waves-effect waves-red btn-flat modal-close">NÃO</span>
+    <span href="#!" class="modal-close waves-effect waves-green btn-flat" (click)="excluirCliente()">SIM</span>
+  </div>
+</div>

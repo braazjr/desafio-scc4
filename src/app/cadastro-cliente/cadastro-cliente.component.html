@@ -1,0 +1,110 @@
+<h5>Cadastro de Cliente</h5>
+
+<form [formGroup]="formulario">
+  <div class="row">
+    <div class="col col-sm-2">
+      <div class="switch">
+        <label>
+          Inativo
+          <input type="checkbox" [(ngModel)]="cliente.active" name="active" formControlName="active">
+          <span class="lever"></span>
+          Ativo
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col s2">
+      <p>
+        <label>
+          <input class="with-gap" name="federalIdType" type="radio" [(ngModel)]="cliente.federalIdType" formControlName="federalIdType"
+            value="Physical" />
+          <span>CPF</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input class="with-gap" name="federalIdType" type="radio" [(ngModel)]="cliente.federalIdType" formControlName="federalIdType"
+            value="Juridical" />
+          <span>CNPJ</span>
+        </label>
+      </p>
+    </div>
+    <div class="input-field col s4">
+      <input id="name" name="name" type="text" class="validate" [(ngModel)]="cliente.name" formControlName="name">
+      <label for="name">Nome *</label>
+    </div>
+    <div class="input-field col s4">
+      <input id="federalId" name="federalId" type="text" class="validate" [(ngModel)]="cliente.federalId" formControlName="federalId"
+        [textMask]="{mask: federalIdMask}">
+      <label for="federalId">{{ getFederal() }}</label>
+    </div>
+    <div class="col s2">
+      <p>
+        <label>
+          <input class="with-gap" name="gender" type="radio" [(ngModel)]="cliente.gender" formControlName="gender" value="M" />
+          <span>Masculino</span>
+        </label>
+      </p>
+      <p>
+        <label>
+          <input class="with-gap" name="gender" type="radio" [(ngModel)]="cliente.gender" formControlName="gender" value="F" />
+          <span>Feminino</span>
+        </label>
+      </p>
+    </div>
+    <div class="input-field col s4">
+      <input id="rg" name="rg" type="text" class="validate" [(ngModel)]="cliente.registration" formControlName="registration">
+      <label for="rg">RG</label>
+    </div>
+    <div class="input-field col s4">
+      <input id="email" name="email" type="email" class="validate" [(ngModel)]="cliente.email" formControlName="email">
+      <label for="email">E-mail *</label>
+    </div>
+    <div class="input-field col s4">
+      <input id="birthday" name="birthday" type="text" class="datepicker" [(ngModel)]="cliente.birthday" formControlName="birthday">
+      <label for="birthday">Data de aniversário </label>
+    </div>
+    <div class="input-field col s3">
+      <input id="phone" name="phone" type="text" class="validate" [(ngModel)]="cliente.phone" formControlName="phone" [textMask]="{mask: cellphoneMask}">
+      <label for="phone">Celular 1 *</label>
+    </div>
+    <div class="input-field col s3">
+      <input id="phone2" name="phone2" type="text" class="validate" [(ngModel)]="cliente.phone2" formControlName="phone2" [textMask]="{mask: cellphoneMask}">
+      <label for="phone2">Celular 2</label>
+    </div>
+    <div class="input-field col s3">
+      <input id="residentialPhone" name="residentialPhone" type="text" class="validate" [(ngModel)]="cliente.residentialPhone"
+        formControlName="residentialPhone" [textMask]="{mask: phoneMask}">
+      <label for="residentialPhone">Fone Residencial</label>
+    </div>
+    <div class="input-field col s3">
+      <input id="commercialPhone" name="commercialPhone" type="text" class="validate" [(ngModel)]="cliente.commercialPhone" formControlName="commercialPhone"
+        [textMask]="{mask: phoneMask}">
+      <label for="commercialPhone">Fone Comercial</label>
+    </div>
+    <div class="input-field col s6">
+      <input id="emergencyContact" name="emergencyContact" type="text" class="validate" [(ngModel)]="cliente.emergencyContact"
+        formControlName="emergencyContact">
+      <label for="emergencyContact">Contato de emergência</label>
+    </div>
+    <div class="input-field col s3">
+      <input id="emergencyPhone" name="emergencyPhone" type="text" class="validate" [(ngModel)]="cliente.emergencyPhone" formControlName="emergencyPhone"
+        [textMask]="{mask: phoneMask}">
+      <label for="emergencyPhone">Telefone de emergência</label>
+    </div>
+  </div>
+  <div class="row">
+    <div class="input-field col s12">
+      <textarea id="emailCollection" name="emailCollection" class="materialize-textarea" [(ngModel)]="cliente.emailCollection"
+        formControlName="emailCollection"></textarea>
+      <label for="emailCollection">E-mail de cobrança (use ; para separar os endereços) *</label>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <h6>Campos obrigatórios *</h6>
+    <button class="btn btn-primary" style="float: right" [disabled]="formulario.invalid" (click)="salvarCliente()">SALVAR</button>
+    <a class="btn-flat" style="float: right">CANCELAR</a>
+  </div>
+</form>
